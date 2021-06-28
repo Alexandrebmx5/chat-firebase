@@ -3,7 +3,6 @@ import 'package:chat_firebase/screens/text_composer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:animate_do/animate_do.dart';
 
 class ChatScreen extends StatefulWidget {
 
@@ -139,14 +138,8 @@ class _ChatScreenState extends State<ChatScreen> {
                           itemCount: documents.length,
                           reverse: true,
                           itemBuilder: (context, index){
-                            return documents[index].data()['type'] == 'sender' ? FadeInRight(
-                              child: ChatMessage(
-                                  documents[index].data()
-                              ),
-                            ) : FadeInLeft(
-                              child: ChatMessage(
-                                  documents[index].data()
-                              ),
+                            return ChatMessage(
+                                documents[index].data()
                             );
                           }
                       );
